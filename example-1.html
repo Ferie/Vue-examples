@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue Examples</title>
+        <link rel="stylesheet" href="css/libs/bootstrap.min.css">
+        <link rel="stylesheet" href="css/examples.css">
+    </head>
+
+    <body>
+        <div class="container" id="app">
+            <h1>{{ message }}</h1>
+
+            <input class="form-control" v-model="message">
+
+            <pre>
+                {{ $data | json }}
+            </pre>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.1/vue.min.js"></script>
+        <script>
+            new Vue ({
+                el: '#app',
+                data: {
+                    message: 'Hello World'
+                }
+            });
+        </script>
+    </body>
+</html>

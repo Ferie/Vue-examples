@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue Examples</title>
+        <link rel="stylesheet" href="css/libs/bootstrap.min.css">
+        <link rel="stylesheet" href="css/examples.css">
+    </head>
+
+    <body>
+        <div class="container" id="app">
+            <form>
+                <fieldset>
+                    <textarea class="form-control" rows="3" v-model="message"></textarea>
+
+                    <span class="error" v-show="!message">
+                        You must enter a message
+                    </span>
+                </fieldset>
+
+                <button type="submit" class="btn btn-default" v-show="message">
+                    Send message
+                </button>
+            </form>
+
+            <pre>
+                {{ $data | json }}
+            </pre>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.1/vue.min.js"></script>
+        <script>
+            new Vue ({
+                el: '#app',
+                data: {
+                    message: ''
+                }
+            });
+        </script>
+    </body>
+</html>

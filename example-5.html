@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue Examples</title>
+        <link rel="stylesheet" href="css/libs/bootstrap.min.css">
+        <link rel="stylesheet" href="css/examples.css">
+    </head>
+
+    <body>
+        <div class="skills">
+            <h1>Skill: {{ skill }}</h1>
+            <input class="form-control" type="text" v-model="points">
+        </div>
+
+        <div class="fullName">
+            <h1>{{ fullName }}</h1>
+            <input class="form-control" name="firstName" type="text" v-model="first">
+            <input class="form-control" name="lastName" type="text" v-model="last">
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.1/vue.js"></script>
+        <script>
+            new Vue ({
+                el: '.skills',
+
+                data: {
+                    points: 50
+                },
+
+                computed: {
+                    skill: function () {
+                        if (this.points <= 100) {
+                            return 'Beginner';
+                        }
+
+                        return 'Advanced';
+                    }
+                },
+
+                methods: {
+                    updateCount: function () {
+                        this.count += 1;
+                    }
+                }
+            });
+
+            new Vue ({
+                el: '.fullName',
+
+                data: {
+                    first: 'Riccardo',
+                    last: 'Andreatta'
+                },
+
+                computed: {
+                    fullName: function () {
+                        return this.first + ' ' + this.last;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

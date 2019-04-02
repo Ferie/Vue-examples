@@ -1,0 +1,49 @@
+fieldset,
+pre {
+    margin: 2em 0;
+}
+
+.examples {
+    margin: 24px;
+}
+
+.error {
+    color: red;
+}
+
+.plan-row {
+    padding: 16px;
+} 
+
+.plan-title-cell {
+    padding: 16px 16px 0;
+    width: 200px;
+} 
+
+.plan-cell {
+    padding: 0 16px;
+    height: 35px;
+} 
+
+.italic {
+    font-style: italic;
+}
+
+.active-list li {
+	cursor: pointer;
+}
+
+.completed,
+.visited {
+	text-decoration: line-through;
+}
+
+.taskButtons {
+    font-weight: bold;
+    background: none;
+    border: 0;
+    color: red;
+    padding: 0;
+    float: right;
+    margin-left: 10px;
+}

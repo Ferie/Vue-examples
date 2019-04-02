@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue Examples</title>
+        <link rel="stylesheet" href="css/libs/bootstrap.min.css">
+        <link rel="stylesheet" href="css/examples.css">
+    </head>
+
+    <body>
+        <div id="example1" class="examples">
+            <h3>List of Tasks</h3>
+            <ul class="active-list">
+				<li v-for="task in tasks">{{ task }}</li>
+			</ul>
+        </div>
+
+        <div id="example2" class="examples">
+            <h3>
+                Daily activities (Total: {{ tasks.length }}<span v-show="remaining"> - Remainig: {{ remaining }}</span><span v-show="completed"> - Completed: {{ completed }}</span>)
+            </h3>
+            <ul class="active-list" v-show="tasks.length">
+				<li :class="{'completed': task.completed}" 
+					v-for="task in tasks"
+					@click="toggleCompleted(task)"
+				>
+					{{ task.body }}
+
+                    <button class="taskButtons" @click="deleteTask(task)">
+                        &#10007;
+                    </button>
+				</li>
+			</ul>
+            <p else>
+                No tasks yet!
+            </p>
+
+            <button class="btn btn-default" @click="clearCompleted()">Clear the completed tasks</button>
+        </div>
+
+        <div id="example3" class="examples">
+            <h3>
+                Italian Cities (Total: {{ cities.length }}<span v-show="remaining"> - Remainig: {{ remaining }}</span><span v-show="visited"> - Visited: {{ visited }}</span>)
+            </h3>
+			<ul class="active-list">
+                <my-visited-cities :cities="cities"></my-visited-cities>
+            </ul>
+
+            <pre>
+                {{ $data | json }}
+            </pre>
+
+            <h3>European Cities (Total: {{ cities.length }} - Remainig: {{ remaining }} - Visited: {{ visited }})</h3>
+			<ul class="active-list">
+                <my-visited-cities :cities="[
+                    {name: 'Amsterdam', visited: true},
+                    {name: 'Athens', visited: false},
+                    {name: 'Barcelona', visited: false},
+                    {name: 'Belfast', visited: false},
+                    {name: 'Belgrade', visited: false},
+                    {name: 'Berlin', visited: false},
+                    {name: 'Berne', visited: false},
+                    {name: 'Bogotá', visited: false},
+                    {name: 'Bratislava', visited: false},
+                    {name: 'Bruxelles', visited: true},
+                    {name: 'Bucarest', visited: true},
+                    {name: 'Budapest', visited: true},
+                    {name: 'Buenos Aires', visited: false},
+                    {name: 'Cardiff', visited: false},
+                    {name: 'Constanța', visited: true},
+                    {name: 'Copenhagen', visited: false},
+                    {name: 'Dublin', visited: true},
+                    {name: 'Edimburgh', visited: false},
+                    {name: 'Gothenburg', visited: false},
+                    {name: 'Hamburg', visited: false},
+                    {name: 'Helsinki', visited: false},
+                    {name: 'Istanbul', visited: true},
+                    {name: 'Kiev', visited: false},
+                    {name: 'Lisboa', visited: false},
+                    {name: 'Ljubljana', visited: false},
+                    {name: 'London', visited: true},
+                    {name: 'Madrid', visited: true},
+                    {name: 'Marseille', visited: false},
+                    {name: 'Monaco', visited: false},
+                    {name: 'Moscow', visited: false},
+                    {name: 'Munich', visited: true},
+                    {name: 'Oslo', visited: false},
+                    {name: 'Paris', visited: false},
+                    {name: 'Podgorica', visited: false},
+                    {name: 'Porto', visited: false},
+                    {name: 'Prague', visited: true},
+                    {name: 'Reykjavík', visited: false},
+                    {name: 'Saint Petersburg', visited: false},
+                    {name: 'Sarajevo', visited: false},
+                    {name: 'Skopje', visited: true},
+                    {name: 'Sofia', visited: true},
+                    {name: 'Stockholm', visited: false},
+                    {name: 'Tiranë', visited: true},
+                    {name: 'Varna', visited: true},
+                    {name: 'Vienna', visited: true},
+                    {name: 'Warsaw', visited: false},
+                    {name: 'Zagreb', visited: false},
+                    {name: 'Zurich', visited: false}
+                ]"></my-visited-cities>
+			</ul>
+
+            <h3>World Cities (Total: {{ cities.length }} - Remainig: {{ remaining }} - Visited: {{ visited }})</h3>
+			<ul class="active-list">
+                <my-visited-cities :cities="[
+                    {name: 'Abu Dhabi', visited: false},
+                    {name: 'Antananarivo', visited: false},
+                    {name: 'Atlanta', visited: false},
+                    {name: 'Auckland', visited: false},
+                    {name: 'Baghdad', visited: false},
+                    {name: 'Bangkok', visited: false},
+                    {name: 'Beijing', visited: false},
+                    {name: 'Cairo', visited: false},
+                    {name: 'Canberra', visited: false},
+                    {name: 'Cape Town', visited: false},
+                    {name: 'Caracas', visited: false},
+                    {name: 'Chicago', visited: false},
+                    {name: 'Dakar', visited: false},
+                    {name: 'Delhi', visited: false},
+                    {name: 'Dubai', visited: false},
+                    {name: 'Fukuoka', visited: false},
+                    {name: 'Havana', visited: false},
+                    {name: 'Hong Kong', visited: false},
+                    {name: 'Honolulu', visited: false},
+                    {name: 'Islamabad', visited: false},
+                    {name: 'Jakarta', visited: false},
+                    {name: 'Johannesburg', visited: false},
+                    {name: 'Kampala', visited: false},
+                    {name: 'Kabul', visited: false},
+                    {name: 'Kyoto', visited: false},
+                    {name: 'Lima', visited: false},
+                    {name: 'Los Angeles', visited: false},
+                    {name: 'Macao', visited: false},
+                    {name: 'Melbourne', visited: false},
+                    {name: 'Mexico City', visited: false},
+                    {name: 'Miami', visited: false},
+                    {name: 'Monterrey', visited: false},
+                    {name: 'Montevideo', visited: false},
+                    {name: 'Mumbai', visited: false},
+                    {name: 'New Taipei', visited: false},
+                    {name: 'New York', visited: false},
+                    {name: 'Osaka', visited: false},
+                    {name: 'Ottawa', visited: false},
+                    {name: 'Panama City', visited: false},
+                    {name: 'Philadelphia', visited: false},
+                    {name: 'Phuket', visited: false},
+                    {name: 'Pyongyang', visited: false},
+                    {name: 'Rio de Janeiro', visited: false},
+                    {name: 'San Francisco', visited: false},
+                    {name: 'São Paulo', visited: false},
+                    {name: 'Sapporo', visited: false},
+                    {name: 'Seoul', visited: false},
+                    {name: 'Shanghai', visited: false},
+                    {name: 'Sharm el-Sheikh', visited: false},
+                    {name: 'Singapore', visited: false},
+                    {name: 'Sydney', visited: false},
+                    {name: 'Tehran', visited: false},
+                    {name: 'Tel Aviv', visited: false},
+                    {name: 'Tokyo', visited: false},
+                    {name: 'Toronto', visited: false},
+                    {name: 'Tripoli', visited: false},
+                    {name: 'Tunisi', visited: false},
+                    {name: 'Washington', visited: false}
+                ]"></my-visited-cities>
+			</ul>
+        </div>
+
+        <template id="visited-cities-template">
+            <li :class="{'visited': city.visited}" 
+                v-for="city in cities"
+                @click="toggleVisited(city)"
+            >
+                {{ city.name }}
+            </li>
+        </template>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.1/vue.js"></script>
+        <script src="js/example-7.js"></script>
+    </body>
+</html>
