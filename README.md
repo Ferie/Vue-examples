@@ -1,2 +1,5 @@
-# Vue-examples
-Some examples in Vue.js
+# Vue examples
+
+This is a sample project with some examples using Vue.js framework.
+
+Practice project 
